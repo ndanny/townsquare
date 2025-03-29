@@ -1,5 +1,19 @@
 # Blood on the Clocktower Grimoire & Town Square
 
+### Danny's modifications
+
+- Added server logs
+
+#### Run the server locally
+
+- `npm install`
+- `cd server && NODE_ENV=development node index.js`
+- `npm run serve` # starts the Vue server
+
+After both servers are running, the WebSocket server will run on port 8081, the Vue frontend will run on 8082 (this is where you can access the application).
+
+### Original content
+
 > :warning: **This project is no longer actively maintained** and will only receive critical bug fixes. :warning:
 
 ![social](https://user-images.githubusercontent.com/325521/102897760-d1147b00-4468-11eb-9d7b-63a204bc9fc1.png)
@@ -12,9 +26,11 @@ It is supposed to aid storytellers and players by allowing them to quickly set u
 If you want to learn more about how to use the app as a player, [JayBotC](https://www.youtube.com/channel/UCNZy-4Rp877XtTHaIZdWYFQ) kindly created two tutorial videos.
 
 ### How to host a game
+
 [![How to host a game](https://img.youtube.com/vi/lVRJPBXfqxg/0.jpg)](https://www.youtube.com/watch?v=lVRJPBXfqxg)
 
 ### How to play a game
+
 [![How to play a game](https://img.youtube.com/vi/VCpFnJFiCbk/0.jpg)](https://www.youtube.com/watch?v=VCpFnJFiCbk)
 
 ## Features
@@ -72,11 +88,11 @@ definition file might be written:
     "team": "outsider",
     "ability": "Each night*, if either good living neighbor is drunk or poisoned, you die."
   },
-  { 
-    "id": "investigator" 
+  {
+    "id": "investigator"
   },
-  { 
-    "id": "imp" 
+  {
+    "id": "imp"
   }
 ]
 ```
@@ -109,16 +125,17 @@ For base game characters, it is sufficient to only provide the ID, similar to wh
 
 ## Acknowledgements and Copyrights
 
-* [Blood on the Clocktower](https://bloodontheclocktower.com/) is a trademark of Steven Medway and [The Pandemonium Institute](https://www.thepandemoniuminstitute.com/)
-* Night reminders and other auxiliary text written by [Ben Finney](http://bignose.whitetree.org/projects/botc/diy/)
-* Iconography by [Font Awesome](https://fontawesome.com/)
-* Background image copyright and permission granted by [Ryan Maloney](https://www.artstation.com/maloney94)
-* Webfonts by [Google Fonts](https://fonts.google.com/) and [Online Web Fonts](https://www.onlinewebfonts.com/)
-* All other images and icons are copyright to their respective owners
+- [Blood on the Clocktower](https://bloodontheclocktower.com/) is a trademark of Steven Medway and [The Pandemonium Institute](https://www.thepandemoniuminstitute.com/)
+- Night reminders and other auxiliary text written by [Ben Finney](http://bignose.whitetree.org/projects/botc/diy/)
+- Iconography by [Font Awesome](https://fontawesome.com/)
+- Background image copyright and permission granted by [Ryan Maloney](https://www.artstation.com/maloney94)
+- Webfonts by [Google Fonts](https://fonts.google.com/) and [Online Web Fonts](https://www.onlinewebfonts.com/)
+- All other images and icons are copyright to their respective owners
 
 This project and its website are provided free of charge and not affiliated with The Pandemonium Institute in any way.
 
 ## Donations
+
 This project will always be available free of charge, since I love building cool things and playing Blood on the Clocktower. If you still want to support me with a donation, you can do that here:
 
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/bra1n)
