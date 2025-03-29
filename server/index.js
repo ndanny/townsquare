@@ -102,8 +102,14 @@ for (let metric in metrics) {
   register.registerMetric(metrics[metric]);
 }
 
+// 1. When server starts (development mode)
+if (process.env.NODE_ENV === "development") {
+  console.log("Development server starting on port 8081");
+}
+
 // a new client connects
 wss.on("connection", function connection(ws, req) {
+  console.log(`New connection to channel: ${ws.channel}, playerId: ${ws.playerId}`);
   // url pattern: clocktower.online/<channel>/<playerId|host>
   const url = req.url.toLocaleLowerCase().split("/");
   ws.playerId = url.pop();
@@ -134,9 +140,20 @@ wss.on("connection", function connection(ws, req) {
   channels[ws.channel].push(ws);
   // start ping pong
   ws.ping(noop);
-  ws.on("pong", heartbeat);
+  ws.on("pong", function() {
+    heartbeat.call(this);
+    console.log(`Heartbeat from ${this.playerId} in channel ${this.channel}, latency: ${this.latency}ms`);
+  });
   // handle message
   ws.on("message", function incoming(data) {
+    console.log(`Message received from ${ws.playerId} in ${ws.channel}:`, {
+      messageType: data
+        .toLocaleLowerCase()
+        .substr(1)
+        .split(",", 1)
+        .pop(),
+      data: data.toString()
+    });
     metrics.messages_incoming.inc();
     // check rate limit (max 5msg/second)
     ws.counter++;
@@ -217,6 +234,8 @@ wss.on("connection", function connection(ws, req) {
 
 // start ping interval timer
 const interval = setInterval(function ping() {
+  console.log("Active channels:", Object.keys(channels));
+  console.log("Total connected clients:", wss.clients.size);
   // ping each client
   wss.clients.forEach(function each(ws) {
     if (ws.isAlive === false) {
